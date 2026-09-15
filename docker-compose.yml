@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: enterprise_wifi_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: wifi_monitor
+      POSTGRES_USER: wifi_admin
+      POSTGRES_PASSWORD: wifi_dev_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
